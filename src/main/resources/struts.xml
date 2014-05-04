@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN"
+    "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<!-- 声明struts2由spring来进行托管 -->
+	<constant name="struts.objectFactory" value="org.apache.struts2.spring.StrutsSpringObjectFactory" />
+	<!-- 定义字符集编码为UTF-8 -->
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<!-- 配置默认的处理action扩展名是.html -->
+	<constant name="struts.action.extension" value="html" />
+	<!-- 对异常显示信息进行修改,使异常显示更详细 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- 设置action可以动态跳转 -->
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+	<!-- 设置标签主题为simple -->
+	<constant name="struts.ui.theme" value="simple" />
+
+	<package name="frame-default" extends="struts-default" abstract="true">
+		<!-- 定义拦截器栈 -->
+		<interceptors>
+			<interceptor name="pagination" class="com.yangc.interceptor.PaginationInterceptor" />
+			<interceptor name="exceptionInterceptor" class="com.yangc.interceptor.ExceptionInterceptor" />
+			<interceptor-stack name="actionstacks">
+				<interceptor-ref name="pagination" />
+				<interceptor-ref name="exceptionInterceptor" />
+				<interceptor-ref name="defaultStack" />
+			</interceptor-stack>
+		</interceptors>
+		<default-interceptor-ref name="actionstacks" />
+
+		<!-- 定义异常全局跳转 -->
+		<global-results>
+			<result name="exception">jsp/error/exception.jsp</result>
+		</global-results>
+		<global-exception-mappings>
+			<exception-mapping result="exception" exception="java.lang.Exception"></exception-mapping>
+		</global-exception-mappings>
+	</package>
+
+	<include file="com/*/*/config/*-struts.xml" />
+</struts>
