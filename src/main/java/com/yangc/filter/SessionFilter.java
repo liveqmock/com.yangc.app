@@ -19,10 +19,11 @@ import com.yangc.utils.ParamUtils;
 
 public class SessionFilter implements Filter {
 
+	@Override
 	public void init(FilterConfig config) throws ServletException {
-
 	}
 
+	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
@@ -40,8 +41,8 @@ public class SessionFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
+	@Override
 	public void destroy() {
-
 	}
 
 }
