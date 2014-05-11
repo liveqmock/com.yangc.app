@@ -15,6 +15,7 @@ public class AclAction {
 	private static Logger logger = Logger.getLogger(AclAction.class);
 
 	private AclService aclService;
+
 	private Long roleId;
 	private Long parentMenuId = 0L;
 	private Long menuId;

@@ -28,13 +28,13 @@ public class PaginationInterceptor extends AbstractInterceptor {
 		Object action = ai.getAction();
 		if (action instanceof PaginationAction) {
 			Pagination pagination = DaoThreadUtil.pagination.get();
-			if (null == pagination) {
+			if (pagination == null) {
 				pagination = new Pagination();
 				DaoThreadUtil.pagination.set(pagination);
 			}
 			Map<String, Object> params = ac.getParameters();
 			// 设置要跳转到的页数
-			if (null == params.get(PAGE_NOW)) {
+			if (params.get(PAGE_NOW) == null) {
 				pagination.setPageNow(1);
 			} else {
 				String pageNow = ((String[]) params.get(PAGE_NOW))[0];
@@ -45,13 +45,13 @@ public class PaginationInterceptor extends AbstractInterceptor {
 				}
 			}
 			// 设置每页的行数
-			if (null != params.get(PAGE_SIZE)) {
+			if (params.get(PAGE_SIZE) != null) {
 				String pageSize = ((String[]) params.get(PAGE_SIZE))[0];
 				if (StringUtils.isNotBlank(pageSize)) {
 					pagination.setPageSize(Integer.parseInt(pageSize));
 				}
 			}
-			logger.debug("PaginationInterceptor - pageNow=" + pagination.getPageNow() + ", pageSize=" + pagination.getPageSize());
+			logger.info("PaginationInterceptor - pageNow=" + pagination.getPageNow() + ", pageSize=" + pagination.getPageSize());
 		}
 		String str = ai.invoke();
 		DaoThreadUtil.clear();

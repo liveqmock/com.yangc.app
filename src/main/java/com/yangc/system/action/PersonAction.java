@@ -8,6 +8,7 @@ import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.yangc.action.PaginationAction;
+import com.yangc.bean.DataGridBean;
 import com.yangc.bean.ResultBean;
 import com.yangc.system.bean.oracle.TSysPerson;
 import com.yangc.system.bean.oracle.TSysUsersroles;
@@ -59,7 +60,9 @@ public class PersonAction implements PaginationAction {
 		}
 		logger.info("getPersonListByPersonNameAndDeptId_page - name=" + name + ", deptId=" + deptId);
 		List<TSysPerson> personList = this.personService.getPersonListByPersonNameAndDeptId_page(name, deptId);
-		JsonUtils.writeJsonToResponse(personList);
+		DataGridBean dataGridBean = new DataGridBean();
+		dataGridBean.setDataGrid(personList);
+		JsonUtils.writeJsonToResponse(dataGridBean);
 		return null;
 	}
 

@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.log4j.Logger;
 
 import com.yangc.action.PaginationAction;
+import com.yangc.bean.DataGridBean;
 import com.yangc.bean.ResultBean;
 import com.yangc.system.bean.oracle.TSysRole;
 import com.yangc.system.service.RoleService;
@@ -37,7 +38,9 @@ public class RoleAction implements PaginationAction {
 	public String getRoleList_page() throws IOException {
 		logger.info("getRoleList_page");
 		List<TSysRole> roleList = this.roleService.getRoleList_page();
-		JsonUtils.writeJsonToResponse(roleList);
+		DataGridBean dataGridBean = new DataGridBean();
+		dataGridBean.setDataGrid(roleList);
+		JsonUtils.writeJsonToResponse(dataGridBean);
 		return null;
 	}
 
