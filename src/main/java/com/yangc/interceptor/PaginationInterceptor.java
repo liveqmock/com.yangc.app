@@ -9,8 +9,8 @@ import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
 import com.opensymphony.xwork2.interceptor.AbstractInterceptor;
 import com.yangc.action.PaginationAction;
-import com.yangc.common.DaoThreadUtil;
 import com.yangc.common.Pagination;
+import com.yangc.common.PaginationThreadUtils;
 
 public class PaginationInterceptor extends AbstractInterceptor {
 
@@ -27,10 +27,10 @@ public class PaginationInterceptor extends AbstractInterceptor {
 		ActionContext ac = ai.getInvocationContext();
 		Object action = ai.getAction();
 		if (action instanceof PaginationAction) {
-			Pagination pagination = DaoThreadUtil.pagination.get();
+			Pagination pagination = PaginationThreadUtils.get();
 			if (pagination == null) {
 				pagination = new Pagination();
-				DaoThreadUtil.pagination.set(pagination);
+				PaginationThreadUtils.set(pagination);
 			}
 			Map<String, Object> params = ac.getParameters();
 			// 设置要跳转到的页数
@@ -54,7 +54,7 @@ public class PaginationInterceptor extends AbstractInterceptor {
 			logger.info("PaginationInterceptor - pageNow=" + pagination.getPageNow() + ", pageSize=" + pagination.getPageSize());
 		}
 		String str = ai.invoke();
-		DaoThreadUtil.clear();
+		PaginationThreadUtils.clear();
 		return str;
 	}
 
