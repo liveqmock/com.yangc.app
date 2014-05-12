@@ -14,7 +14,7 @@ import com.yangc.utils.LoginUserUtils;
 
 public class MenuAction {
 
-	private static Logger logger = Logger.getLogger(MenuAction.class);
+	private static final Logger logger = Logger.getLogger(MenuAction.class);
 
 	private MenuService menuService;
 

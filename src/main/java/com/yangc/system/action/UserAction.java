@@ -18,7 +18,7 @@ import com.yangc.utils.ParamUtils;
 
 public class UserAction {
 
-	private static Logger logger = Logger.getLogger(UserAction.class);
+	private static final Logger logger = Logger.getLogger(UserAction.class);
 
 	private UserService userService;
 

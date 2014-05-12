@@ -12,7 +12,7 @@ import com.yangc.utils.JsonUtils;
 
 public class AclAction {
 
-	private static Logger logger = Logger.getLogger(AclAction.class);
+	private static final Logger logger = Logger.getLogger(AclAction.class);
 
 	private AclService aclService;
 

@@ -71,7 +71,7 @@
 			<version>1.5.0</version>
 			<scope>system</scope>
 			<!-- 此处根据实际配置 -->
-			<systemPath>D:\Program Files\Java\jdk1.6.0_30\lib\tools.jar</systemPath>
+			<systemPath>E:\Program Files\Java\jdk1.6.0_30\lib\tools.jar</systemPath>
 		</dependency>
 		<dependency>
 			<groupId>com.oracle</groupId>
@@ -132,6 +132,11 @@
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
 			<version>1.2.17</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.5</version>
 		</dependency>
 		<dependency>
 			<groupId>com.yangc</groupId>

@@ -14,7 +14,7 @@ import com.yangc.utils.JsonUtils;
 
 public class RoleAction implements PaginationAction {
 
-	private static Logger logger = Logger.getLogger(RoleAction.class);
+	private static final Logger logger = Logger.getLogger(RoleAction.class);
 
 	private RoleService roleService;
 
