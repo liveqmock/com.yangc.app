@@ -23,7 +23,7 @@ Ext.onReady(function() {
 		},
 		autoLoad: true,
 		listeners: {
-    		"load": function(thiz, records, successful, eOpts){
+    		load: function(thiz, records, successful, eOpts){
 				for (var i = 0, recordsLength = records.length; i < recordsLength; i++) {
 					var html = "";
 					var childRenMenu = records[i].get("childRenMenu");

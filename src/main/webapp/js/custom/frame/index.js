@@ -25,7 +25,7 @@ Ext.onReady(function() {
 		},
 		autoLoad: true,
 		listeners: {
-    		"load": function(thiz, records, successful, eOpts){
+    		load: function(thiz, records, successful, eOpts){
 				for (var i = 0, length = records.length; i < length; i++) {
 					var url = basePath + records[i].get("menuUrl") + "?parentMenuId=" + records[i].get("id");
 					body.add({
