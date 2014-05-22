@@ -16,7 +16,7 @@ public class LoginUserUtils {
 	 */
 	public static TSysUser getLoginUser() {
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		TSysUser user = (TSysUser) session.getAttribute(ParamUtils.LOGIN_USER);
+		TSysUser user = (TSysUser) session.getAttribute(Constants.CURRENT_USER);
 		return user;
 	}
 

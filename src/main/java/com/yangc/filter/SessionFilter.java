@@ -14,8 +14,8 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.lang.StringUtils;
 
 import com.yangc.bean.ResultBean;
+import com.yangc.utils.Constants;
 import com.yangc.utils.JsonUtils;
-import com.yangc.utils.ParamUtils;
 
 public class SessionFilter implements Filter {
 
@@ -28,7 +28,7 @@ public class SessionFilter implements Filter {
 		HttpServletRequest req = (HttpServletRequest) request;
 		String uri = req.getRequestURI();
 		HttpSession session = req.getSession();
-		Object obj = session.getAttribute(ParamUtils.LOGIN_USER);
+		Object obj = session.getAttribute(Constants.CURRENT_USER);
 		if (null == obj && !uri.contains("userAction!login.html")) {
 			String header = req.getHeader("X-Requested-With");
 			if (StringUtils.isNotBlank(header) && header.equals("X-Requested-With")) {

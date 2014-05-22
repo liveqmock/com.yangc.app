@@ -12,9 +12,9 @@ import org.apache.struts2.ServletActionContext;
 import com.yangc.bean.ResultBean;
 import com.yangc.system.bean.oracle.TSysUser;
 import com.yangc.system.service.UserService;
+import com.yangc.utils.Constants;
 import com.yangc.utils.JsonUtils;
 import com.yangc.utils.LoginUserUtils;
-import com.yangc.utils.ParamUtils;
 
 public class UserAction {
 
@@ -49,9 +49,9 @@ public class UserAction {
 			} else {
 				TSysUser user = users.get(0);
 				HttpSession session = ServletActionContext.getRequest().getSession();
-				session.setAttribute(ParamUtils.LOGIN_USER, user);
+				session.setAttribute(Constants.CURRENT_USER, user);
 				resultBean.setSuccess(true);
-				resultBean.setMessage(ParamUtils.INDEX_PAGE);
+				resultBean.setMessage(Constants.INDEX_PAGE);
 			}
 		}
 		JsonUtils.writeJsonToResponse(resultBean);
@@ -67,7 +67,7 @@ public class UserAction {
 	public String logout() {
 		logger.info("logout");
 		HttpSession session = ServletActionContext.getRequest().getSession();
-		session.removeAttribute(ParamUtils.LOGIN_USER);
+		session.removeAttribute(Constants.CURRENT_USER);
 		session.invalidate();
 		return "loginPage";
 	}
