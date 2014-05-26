@@ -11,8 +11,8 @@
         timeToLiveSeconds="120"
         diskPersistent="false"
         diskExpiryThreadIntervalSeconds="120"
-        memoryStoreEvictionPolicy="LRU"
-    />
+        memoryStoreEvictionPolicy="LRU" />
+
 	<cache name="org.hibernate.cache.StandardQueryCache" maxElementsInMemory="10000" eternal="false" timeToIdleSeconds="3600" timeToLiveSeconds="7200" overflowToDisk="true" />
 	<cache name="org.hibernate.cache.UpdateTimestampsCache" maxElementsInMemory="10000" eternal="true" overflowToDisk="true" />
 </ehcache>
