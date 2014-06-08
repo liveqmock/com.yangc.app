@@ -38,7 +38,7 @@ Ext.define("Role", {
 	]
 });
 
-Ext.onReady(function() {
+Ext.onReady(function(){
 	/** ------------------------------------- store ------------------------------------- */
 	var store_personGrid = Ext.create("Ext.data.Store", {
 		model: "Person",

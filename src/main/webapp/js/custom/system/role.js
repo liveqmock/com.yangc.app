@@ -27,7 +27,7 @@ Ext.define("AuthTree", {
     ]
 });
 
-Ext.onReady(function() {
+Ext.onReady(function(){
 	/** ------------------------------------- store ------------------------------------- */
 	var store_roleGrid = Ext.create("Ext.data.Store", {
 		model: "Role",
