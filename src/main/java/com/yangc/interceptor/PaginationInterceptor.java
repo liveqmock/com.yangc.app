@@ -16,7 +16,7 @@ public class PaginationInterceptor extends AbstractInterceptor {
 
 	private static final long serialVersionUID = 7394634595783880988L;
 
-	private Logger logger = Logger.getLogger(PaginationInterceptor.class);
+	private static final Logger logger = Logger.getLogger(PaginationInterceptor.class);
 
 	// 前端js对分页请求的名字
 	private static final String PAGE_SIZE = "limit";
