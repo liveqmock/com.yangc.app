@@ -199,7 +199,7 @@ Ext.onReady(function(){
 			message.confirm("是否删除记录？", function(){
 				var record = grid_role.getSelectionModel().getSelection()[0];
 				$.post(basePath + "roleAction!delRole.html", {
-					id: record.get("id"),
+					id: record.get("id")
 				}, function(data){
 					if (data.success) {
 						window_addOrUpdate_role.hide();

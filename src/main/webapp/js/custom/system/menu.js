@@ -181,7 +181,7 @@ Ext.onReady(function(){
 		if (record.get("leaf")) {
 			message.confirm("是否删除记录？", function(){
 				$.post(basePath + "menuAction!delMenu.html", {
-					id: record.get("id"),
+					id: record.get("id")
 				}, function(data){
 					if (data.success) {
 						fieldSetReadOnly(true);
