@@ -7,6 +7,7 @@ import org.hibernate.EmptyInterceptor;
 import org.hibernate.type.Type;
 
 import com.yangc.bean.BaseBean;
+import com.yangc.system.bean.oracle.TSysUser;
 import com.yangc.utils.LoginUserUtils;
 
 public class HibernateInterceptor extends EmptyInterceptor {
@@ -31,9 +32,11 @@ public class HibernateInterceptor extends EmptyInterceptor {
 					bean.setUpdateTime(updateTime);
 				} else if (propertyNames[i].equalsIgnoreCase("updateUser")) {
 					b = true;
-					Long userId = LoginUserUtils.getLoginUser().getId();
-					currentState[i] = userId;
-					bean.setUpdateUser(userId);
+					TSysUser user = LoginUserUtils.getLoginUser();
+					if (user != null) {
+						currentState[i] = user.getId();
+						bean.setUpdateUser(user.getId());
+					}
 				}
 			}
 			return b;
@@ -59,9 +62,11 @@ public class HibernateInterceptor extends EmptyInterceptor {
 					bean.setCreateTime(createTime);
 				} else if (propertyNames[i].equalsIgnoreCase("createUser")) {
 					b = true;
-					Long userId = LoginUserUtils.getLoginUser().getId();
-					state[i] = userId;
-					bean.setCreateUser(userId);
+					TSysUser user = LoginUserUtils.getLoginUser();
+					if (user != null) {
+						state[i] = user.getId();
+						bean.setCreateUser(user.getId());
+					}
 				}
 			}
 			return b;
